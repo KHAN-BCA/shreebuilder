@@ -1,8 +1,8 @@
-if (process.env.NODE_ENV!= 'production') {
+if (process.env.NODE_ENV != 'production') {
   require('dotenv').config()
 }
 const express = require('express');
-const app = express();  
+const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
 const router = require('./router/router');
@@ -17,6 +17,7 @@ async function main() {
 
     // mongoose.connect('mongodb://localhost:1.2.7/construction');
     // mongoose.connect(process.env.DATABASE_URL);
+    
   } catch (err) {
     console.log(err);
   }
@@ -29,13 +30,20 @@ main().then(() => {
 
 // use and set middleware
 app.set('view engine', 'ejs');
-app.set('views' , path.join(__dirname , '/views'))
+app.set('views', path.join(__dirname, '/views'))
 app.use(express.static(path.join(__dirname, '/public')));
 app.engine('ejs', engine);
 app.use(helmet());
-app.use(cors());
+
+const options = {
+  // origin: 'https://shreebuilder.onrender.com',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  Credential: true
+}
+
+app.use(cors(options));
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json()); 
+app.use(express.json());
 
 
 
