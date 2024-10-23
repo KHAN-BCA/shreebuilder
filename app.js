@@ -13,15 +13,9 @@ const helmet = require('helmet');
 
 async function main() {
   try {
-   // mongoose.connect('mongodb://127.0.0.1:27017/construction');
-
-<<<<<<< HEAD
-    // mongoose.connect('mongodb://localhost:1.2.7/construction');
+    mongoose.connect('mongodb://127.0.0.1:27017/construction');  
     // mongoose.connect(process.env.DATABASE_URL);
-    
-=======
-     mongoose.connect('mongodb+srv://dipakgiree41:YfaP5jkqPacc4jgc@cluster0.9btvl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
->>>>>>> 0591e9c1667a361d09d5d2a98c28acd91b279b4b
+
   } catch (err) {
     console.log(err);
   }
